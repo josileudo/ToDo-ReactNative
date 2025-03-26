@@ -1,9 +1,5 @@
 import {
-  Button,
   FlatList,
-  Image,
-  Pressable,
-  SafeAreaView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -16,10 +12,53 @@ import { Header } from "../../components/Header";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Monitoring } from "../../components/Monitoring";
 import { EmptyFile } from "../../components/EmptyFile";
+import { Task } from "../../components/Task";
 
 export const Home = () => {
   const [form, setForm] = useState("");
   const [isFocus, setIsFocus] = useState(false);
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: "Estudar React Native",
+      isComplete: false,
+    },
+    {
+      id: 2,
+      title: "Estudar React",
+      isComplete: false,
+    },
+    {
+      id: 3,
+      title: "Estudar Node",
+      isComplete: true,
+    },
+  ]);
+
+  const handleDelete = (id: number) => {
+    console.log(id);
+    setTasks((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const handleComplete = (id: number) => {
+    console.log("complete");
+    setTasks((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            isComplete: !item.isComplete,
+          };
+        } else {
+          return item;
+        }
+      })
+    );
+  };
+
+  const quantityComplete = (): number => {
+    return tasks.filter((task) => task.isComplete).length;
+  };
 
   return (
     <View style={styles.container}>
@@ -50,16 +89,28 @@ export const Home = () => {
       </View>
 
       <View style={styles.tasks}>
-        <Monitoring />
+        <Monitoring
+          quantity={tasks.length}
+          quantityComplete={quantityComplete()}
+        />
         <FlatList
-          data={[]}
-          renderItem={() => {
+          data={tasks}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => {
             return (
-              <View>
-                <Text style={{ color: "#ffff" }}>teste</Text>
-              </View>
+              <Task
+                title={item.title}
+                isComplete={item.isComplete}
+                onAction={() => {
+                  handleComplete(item.id);
+                }}
+                onDelete={() => {
+                  handleDelete(item.id);
+                }}
+              />
             );
           }}
+          ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => <EmptyFile />}
         />

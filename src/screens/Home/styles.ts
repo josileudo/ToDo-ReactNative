@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.gray600,
-    paddingHorizontal: 24,
   },
   form: {
     marginTop: -28,
@@ -13,6 +12,7 @@ export const styles = StyleSheet.create({
     height: 52,
     flexDirection: "row",
     gap: 4,
+    paddingHorizontal: 24,
   },
   eventInput: {
     flex: 1,
@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     gap: 20,
+    paddingHorizontal: 24,
   },
   focusBorder: {
     borderColor: Colors.purple,
