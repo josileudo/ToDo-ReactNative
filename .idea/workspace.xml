@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a5156d-46e5-4320-bd1b-feb5ee33e781" name="Changes" comment=":memo: feat: Implement README to application">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e8a5156d-46e5-4320-bd1b-feb5ee33e781" name="Changes" comment=":memo: feat: Implement README to application" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +142,7 @@
       <workItem from="1742564402325" duration="123000" />
       <workItem from="1742666495501" duration="5558000" />
       <workItem from="1742672198730" duration="9270000" />
-      <workItem from="1743001146088" duration="936000" />
+      <workItem from="1743001146088" duration="1291000" />
     </task>
     <task id="LOCAL-00001" summary=":memo: feat: Implement README to application">
       <option name="closed" value="true" />
@@ -154,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742419173131</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=":memo: feat: Implement README to application">
+      <option name="closed" value="true" />
+      <created>1743016636610</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743016636610</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
