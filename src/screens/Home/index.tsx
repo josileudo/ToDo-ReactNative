@@ -1,10 +1,4 @@
-import {
-  FlatList,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 import { Colors } from "../../constants/theme";
 import { useState } from "react";
@@ -13,34 +7,32 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Monitoring } from "../../components/Monitoring";
 import { EmptyFile } from "../../components/EmptyFile";
 import { Task } from "../../components/Task";
+import { TodoProps } from "../../shared/interfaces/TodoProps";
 
 export const Home = () => {
   const [form, setForm] = useState("");
   const [isFocus, setIsFocus] = useState(false);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Estudar React Native",
-      isComplete: false,
-    },
-    {
-      id: 2,
-      title: "Estudar React",
-      isComplete: false,
-    },
-    {
-      id: 3,
-      title: "Estudar Node",
-      isComplete: true,
-    },
-  ]);
+  const [tasks, setTasks] = useState<TodoProps[]>([]);
 
-  const handleDelete = (id: number) => {
+  const handleAddTask = () => {
+    if (!form) return;
+
+    setTasks((prev) => [
+      ...prev,
+      {
+        id: tasks.length + 1,
+        title: form,
+        isComplete: false,
+      },
+    ]);
+  };
+
+  const handleDeleteTask = (id: number) => {
     console.log(id);
     setTasks((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const handleComplete = (id: number) => {
+  const handleCompleteTask = (id: number) => {
     console.log("complete");
     setTasks((prev) =>
       prev.map((item) => {
@@ -78,7 +70,9 @@ export const Home = () => {
         <TouchableOpacity
           activeOpacity={0.8}
           style={styles.button}
-          onPress={() => {}}
+          onPress={() => {
+            handleAddTask();
+          }}
         >
           <Ionicons
             name="add-circle-outline"
@@ -102,10 +96,10 @@ export const Home = () => {
                 title={item.title}
                 isComplete={item.isComplete}
                 onAction={() => {
-                  handleComplete(item.id);
+                  item.id && handleCompleteTask(item.id);
                 }}
                 onDelete={() => {
-                  handleDelete(item.id);
+                  item.id && handleDeleteTask(item.id);
                 }}
               />
             );

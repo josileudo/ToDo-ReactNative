@@ -2,13 +2,11 @@ import { Text, Touchable, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "../../constants/theme";
+import { TodoProps } from "../../shared/interfaces/TodoProps";
 
-export interface TaskProps {
-  id?: string;
-  title: string;
-  isComplete: boolean;
-  onAction: () => void;
-  onDelete: () => void;
+export interface TaskProps extends TodoProps {
+  onAction?: () => void;
+  onDelete?: () => void;
 }
 
 export const Task = (props: TaskProps) => {
