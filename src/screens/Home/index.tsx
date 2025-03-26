@@ -42,8 +42,7 @@ export const Home = () => {
         text: "Sim",
         onPress: () => {
           setTasks((prev) => prev.filter((item) => item.id !== id));
-
-          Alert.alert("Deletado");
+          Alert.alert("Deletado com sucesso");
         },
       },
       {
@@ -53,20 +52,16 @@ export const Home = () => {
     ]);
   };
 
-  // TODO: Complete task
   const handleCompleteTask = (id: number) => {
-    console.log("complete");
     setTasks((prev) =>
-      prev.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            isComplete: !item.isComplete,
-          };
-        } else {
-          return item;
-        }
-      })
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              isComplete: !item.isComplete,
+            }
+          : item
+      )
     );
   };
 
