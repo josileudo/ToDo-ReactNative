@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     color: Colors.blue,
+    fontFamily: "inter_bold",
   },
   value: {
     paddingHorizontal: 8,
@@ -24,5 +25,6 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     color: Colors.gray200,
     backgroundColor: Colors.gray400,
+    fontFamily: "inter_bold",
   },
 });

@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.gray100,
     zIndex: 10,
+    fontFamily: "inter_regular",
   },
   button: {
     height: "100%",

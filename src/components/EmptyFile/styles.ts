@@ -15,10 +15,12 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     color: Colors.gray300,
     marginTop: 16,
+    fontFamily: "inter_bold",
   },
   subtitle: {
     fontSize: 14,
     fontWeight: "400",
     color: Colors.gray300,
+    fontFamily: "inter_regular",
   },
 });
