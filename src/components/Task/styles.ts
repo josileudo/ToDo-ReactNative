@@ -11,8 +11,10 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: Colors.gray400,
     borderWidth: 1,
-    padding: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     gap: 8,
+    position: "relative",
   },
   btnCheck: {
     borderRadius: 999,
@@ -37,5 +39,27 @@ export const styles = StyleSheet.create({
   textComplete: {
     textDecorationLine: "line-through",
     color: Colors.gray300,
+  },
+  btnCheckHover: {
+    color: Colors.danger,
+    backgroundColor: Colors.gray200,
+  },
+  btnDelete: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 4,
+    width: 32,
+    height: 32,
+  },
+  btnDeletePress: {
+    backgroundColor: Colors.gray400,
+  },
+  btnDeleteIcon: {
+    borderRadius: 4,
+    color: Colors.gray300,
+    backgroundColor: "transparent",
+  },
+  btnDeleteIconPress: {
+    color: Colors.danger,
   },
 });

@@ -1,7 +1,13 @@
-import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  FlatList,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { styles } from "./styles";
 import { Colors } from "../../constants/theme";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Header } from "../../components/Header";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Monitoring } from "../../components/Monitoring";
@@ -11,8 +17,8 @@ import { TodoProps } from "../../shared/interfaces/TodoProps";
 
 export const Home = () => {
   const [form, setForm] = useState("");
-  const [isFocus, setIsFocus] = useState(false);
   const [tasks, setTasks] = useState<TodoProps[]>([]);
+  const addNewTaskRef = useRef<TextInput>(null);
 
   const handleAddTask = () => {
     if (!form) return;
@@ -21,17 +27,33 @@ export const Home = () => {
       ...prev,
       {
         id: tasks.length + 1,
-        title: form,
+        title: form.trim(),
         isComplete: false,
+      },
+    ]);
+
+    setForm("");
+    addNewTaskRef.current?.blur();
+  };
+
+  const handleDeleteTask = (id: number) => {
+    Alert.alert("Alerta", `Deseja remover essa task?`, [
+      {
+        text: "Sim",
+        onPress: () => {
+          setTasks((prev) => prev.filter((item) => item.id !== id));
+
+          Alert.alert("Deletado");
+        },
+      },
+      {
+        text: "Não",
+        style: "cancel",
       },
     ]);
   };
 
-  const handleDeleteTask = (id: number) => {
-    console.log(id);
-    setTasks((prev) => prev.filter((item) => item.id !== id));
-  };
-
+  // TODO: Complete task
   const handleCompleteTask = (id: number) => {
     console.log("complete");
     setTasks((prev) =>
@@ -58,12 +80,19 @@ export const Home = () => {
 
       <View style={styles.form}>
         <TextInput
-          style={[styles.eventInput, isFocus && styles.focusBorder]}
+          ref={addNewTaskRef}
+          style={[
+            styles.eventInput,
+            addNewTaskRef.current?.isFocused() &&
+              form.length > 0 &&
+              styles.focusBorder,
+          ]}
           placeholderTextColor={Colors.gray300}
           placeholder="Adicione uma nova tarefa"
           onChangeText={(text) => setForm(text)}
-          onFocus={() => setIsFocus(() => true)}
-          onBlur={() => setIsFocus(() => false)}
+          onSubmitEditing={() => handleAddTask()}
+          autoCorrect={false}
+          returnKeyType="done"
           value={form}
         />
 

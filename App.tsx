@@ -1,12 +1,8 @@
 import { Home } from "./src/screens/Home";
 import { ScreenWrapper } from "./src/components/ScreenWrapper";
 import * as SplashScreen from "expo-splash-screen";
-import {
-  Inter_400Regular,
-  Inter_700Bold,
-  useFonts,
-} from "@expo-google-fonts/inter";
 import { useEffect } from "react";
+import { useFonts } from "expo-font";
 
 SplashScreen.preventAutoHideAsync();
 
